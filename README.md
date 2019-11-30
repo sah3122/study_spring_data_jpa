@@ -63,3 +63,17 @@ Inflearn Spring Data JPA 강의 정리
                 * 데이터베이스에 요청을 적게 할 수록 성능이 좋아 join을 사용함
                 * 너무 많은 데이터를 가지고 오려는것도 문제
                 * 그렇다고 lazy loading을 하자니 그것도 문제 (n + 1 select)
+* JPA 프로그래밍
+    * 프로젝트 세팅
+        * 스프링 부트
+            * 스프링 부트 v2.*
+            * 스프링 프레임워크 v5.*
+        * 스프링 부트 스타터 JPA
+            * JPA 프로그래밍에 필요한 의존성 추가
+                * JPA v2.*
+                * Hibernate v5.*
+            * 자동 설정 : HibernateeJpaAutoConfiguration
+                * 컨테이너가 관리하는 EntityManager (프록시) 빈 설정
+                * PlatfromTransactionManager 빈 설정
+        
+            
