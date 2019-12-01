@@ -26,10 +26,25 @@ public class JpaRunner implements ApplicationRunner {
         study.setName("jpadata");
 
         account.addStudy(study);
+/////////////////////////////////////
+        Post post = new Post();
+        post.setTitle("Spring Data JPA");
 
+        Comment comment = new Comment();
+        comment.setComment("ddd");
+        post.addCommment(comment);
+
+        Comment comment1 = new Comment();
+        comment1.setComment("ddd");
+
+        post.addCommment(comment1);
 
         Session session = entityManager.unwrap(Session.class); // hibernate의 가장 핵심적인 객체
         session.save(account);
+        session.save(post);
         //entityManager.persist(account);
+
+        Account dongchul = session.load(Account.class, account.getId());
+        dongchul.setUsername("leedongchul"); // dirty checking
     }
 }
