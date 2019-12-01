@@ -39,6 +39,14 @@ public class Post {
         return comments;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }

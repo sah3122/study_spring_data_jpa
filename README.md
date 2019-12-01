@@ -150,6 +150,16 @@ Inflearn Spring Data JPA 강의 정리
         * 연관 관계의 엔티티를 어떻게 가지고 올 것이냐 지금 (Eager) 나중에 (Lazy)
             * @OneToMany의 기본값은 Lazy
             * @ManyToOne의 기본값은 Eager
+    * Query
+        * JPQL (HQL)
+            * Java Persistence Query Language / Hibernate Query Language
+            * 데이터베이스 테이블이 아닌, 엔티티 객체 모델 기반으로 쿼리 작성
+            * JPA 또는 하이버네이트가 해당 쿼리를 SQL로 변환해서 실행
+        * Criteria
+            * 타입 세이프 쿼리
+        * Native Query
+            * SQL 쿼리 실행하기
+     
          
          
             
