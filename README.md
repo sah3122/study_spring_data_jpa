@@ -121,6 +121,24 @@ Inflearn Spring Data JPA 강의 정리
             * @Embeddable
             * @Embedded
             * @AttributeOverrides
-            * @AttributeOverride     
+            * @AttributeOverride
+    * 관계 맵핑
+        * 관게에는 항상 두 엔티티가 존재
+            * 둘 중 하나는 관계의 주인(owner)
+            * 다른 쪽은 종속된(non-owning) 
+            * 해당 관계의 반대쪽 레퍼런스를 가지고 있는 쪽이 주인
+        * 단방향에서의 관계의 주인은 명확
+            * 관계를 정의한 쪽이 그 관게의 주인
+        * 단방향 @ManyToOne
+            * 기본값은 FK 생성
+        * 단방향 @OneToMany
+            * 기본값은 조인 테이블 생성
+        * 양방향
+            * FK를 가지고 있는 쪽이 오너, 따라서 기본값은 @ManyToOne 가지고 있는 쪽이 주인
+            * 주인이 아닌쪽 (@OneToMany)에서 mappedBy를 사용해서 관계를 맺고 있는 필드를 설정 해야 한다.
+        * 양방향
+            * @ManyToOne (이쪽이 주인)
+            * @OneToMany (mappedBy)
+            * 주인한테 관계를 설정해야 DB에 반영     
          
             

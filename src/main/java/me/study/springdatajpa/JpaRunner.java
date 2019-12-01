@@ -22,6 +22,12 @@ public class JpaRunner implements ApplicationRunner {
         account.setUsername("dongchul");
         account.setPassword("jpa");
 
+        Study study = new Study();
+        study.setName("jpadata");
+
+        account.addStudy(study);
+
+
         Session session = entityManager.unwrap(Session.class); // hibernate의 가장 핵심적인 객체
         session.save(account);
         //entityManager.persist(account);

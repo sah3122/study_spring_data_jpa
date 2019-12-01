@@ -2,6 +2,8 @@ package me.study.springdatajpa;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Account {
@@ -25,6 +27,41 @@ public class Account {
     })
     private Address address;
 
+    @OneToMany(mappedBy = "owner")
+    private Set<Study> studies = new HashSet<>();
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getYes() {
+        return yes;
+    }
+
+    public void setYes(String yes) {
+        this.yes = yes;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Set<Study> getStudies() {
+        return studies;
+    }
+
+    public void setStudies(Set<Study> studies) {
+        this.studies = studies;
+    }
+
     public Long getId() {
         return id;
     }
@@ -47,5 +84,16 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    //연관관계 편의 메소드
+    public void addStudy(Study study) {
+        study.setOwner(this);
+        this.getStudies().add(study);
+    }
+
+    public void removeStudy(Study study) {
+        study.setOwner(null);
+        this.getStudies().remove(study);
     }
 }
