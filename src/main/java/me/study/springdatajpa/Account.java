@@ -19,6 +19,12 @@ public class Account {
     @Transient
     private String yes;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "home_street"))
+    })
+    private Address address;
+
     public Long getId() {
         return id;
     }
