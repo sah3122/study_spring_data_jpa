@@ -168,7 +168,18 @@ Inflearn Spring Data JPA 강의 정리
         * 매직의 시작은 여기서 부터
     * 매직은 어떻게 이뤄지나 ?
         * 시작은 @Import(JpaRepositoriesRegistrar.class)
-        * 홱심은 ImportBeanDefinitionRegistrar 인터페이스             
+        * 홱심은 ImportBeanDefinitionRegistrar 인터페이스           
+* 핵심 개념 이해 정리
+    * 데이터베이스와 자바
+    * 패러다임 불일치
+    * ORM이란 ?
+    * JPA 사용법 (엔티티, 벨류 타입, 관계 맵핑)
+    * JPA 특징(엔티티 상태 변화, Cascade, Fetch, 1차 캐시, ...)
+    * 주의할 점
+        * 반드시 발생하는 SQL을 확인할 것
+        * 팁
+            * logging.level.org.hibernate.SQL=debug
+            * logging.level.org.hibernate.type.description.sql=trace  // 파라미터 값 확인 할 수 있음
      
          
          
