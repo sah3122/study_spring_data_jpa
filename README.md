@@ -180,6 +180,13 @@ Inflearn Spring Data JPA 강의 정리
         * 팁
             * logging.level.org.hibernate.SQL=debug
             * logging.level.org.hibernate.type.description.sql=trace  // 파라미터 값 확인 할 수 있음
+* 스프링 데이터 Common : Repository
+    * 스프링 데이터 Common
+        * Repository
+        * CrudRepository
+        * PagingAndSortingRepository
+    * 스프링 데이터 JPA
+        * JpaRepository
      
          
          
