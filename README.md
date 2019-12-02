@@ -159,6 +159,16 @@ Inflearn Spring Data JPA 강의 정리
             * 타입 세이프 쿼리
         * Native Query
             * SQL 쿼리 실행하기
+    
+* 스프링 데이터 JPA 소개 및 원리
+    * JpaRepository<Entity, id> 인터페이스
+        * 매직 인터페이스
+        * @Repository가 없어도 빈으로 등록해 줌.
+    * @EnableJpaRepositories
+        * 매직의 시작은 여기서 부터
+    * 매직은 어떻게 이뤄지나 ?
+        * 시작은 @Import(JpaRepositoriesRegistrar.class)
+        * 홱심은 ImportBeanDefinitionRegistrar 인터페이스             
      
          
          
