@@ -187,7 +187,12 @@ Inflearn Spring Data JPA 강의 정리
         * PagingAndSortingRepository
     * 스프링 데이터 JPA
         * JpaRepository
-     
+* 스프링 데이터 Common : 인터페이스 정의하기
+    * Repository 인터페이스로 공개할 메소드를 직접 일일히 정의하고 싶다면 특정 리포지토리당
+        * @RepositoryDefinition
+    * 공통 인터페이스 정의
+        * @NoRepositoryBean
+    
          
          
             
