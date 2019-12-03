@@ -192,6 +192,18 @@ Inflearn Spring Data JPA 강의 정리
         * @RepositoryDefinition
     * 공통 인터페이스 정의
         * @NoRepositoryBean
+* 스프링 데이터 Common : Null 처리하기
+    * 스프링 데이터 2.0 부터 자바 8의 Optional 지원
+        * Optional<Post> findById(Long id)
+    * 콜렉션은 Null을 리턴하지 않고 비어있는 콜렉션을 리턴합니다.
+    * 스프링 프레임워크 5.0부터 지원하는 Null 애노테이션 지원
+        * @NonNull, @NonNullApi, @Nullable
+        * 런타임 체크 지원 함
+        * JSR 305 애노테이션을 메타 애노테이션으로 가지고 있음
+    * 인텔리 J 설정
+        * Buildm Execution, Deployment
+            * Compiler
+                * Add runtime assertion for notnull-annotated methods and parameters
     
          
          
