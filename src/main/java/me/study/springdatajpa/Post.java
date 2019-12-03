@@ -14,6 +14,16 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
+    private int like;
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
     public void addCommment(Comment comment) {
         this.getComments().add(comment);
         comment.setPost(this);

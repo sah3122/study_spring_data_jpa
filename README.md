@@ -204,6 +204,31 @@ Inflearn Spring Data JPA 강의 정리
         * Buildm Execution, Deployment
             * Compiler
                 * Add runtime assertion for notnull-annotated methods and parameters
+* 스프링 데이터 Common : 쿼리 만들기 개요
+    * 스프링 데이터 저장소의 메소드 이름으로 쿼리 만드는 방법
+        * 메소드 이름을 분석해서 쿼리 만들기(CREATE)
+        * 미리 정의해 둔 뭐리 찾아 사용하기(USE_DECLATED_QUERY)
+        * 미리 정의한 쿼리 찾아보고 없으면 만들기 (CREATE_IF_NOT_FOUND)
+    * 쿼리 만드는 방법
+        * 리턴타입 {접두어}{도입부}By{프로퍼티 표현식}{조건식}[{And|OR}{프로퍼티표현식}{조건식}]{정렬조건}{매개변수}
+        * 접두어
+            * Find, Get, Query, Count, ...
+        * 도입부
+            * Distinct, First(N), Top(N)
+        * 프로퍼티 표현식
+            * Person, Address, ZipCode => find{Person}ByAddress_ZipCode(...)
+        * 조건식
+            * IgnoreCase, Between, LessThan, GreaterThan, Like, Contains, ...
+        * 정렬 조건
+            * OrderBy{프로퍼티}Asc|Desc
+        * 리턴 타입
+            * E, Optional<E>, List<E>, Page<E>, Slice<E>, Stream<E>, ...
+        * 매개변수
+            * Pageable, Sort
+    * 쿼리 찾는 방법
+        * 메소드 이름으로 쿼리를 표현하기 힘든 경우에 사용
+        * 저장소 기술에 따라 다름
+        * JPA : @Query, @ @NamedQuery
     
          
          

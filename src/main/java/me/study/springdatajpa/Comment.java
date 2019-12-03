@@ -14,6 +14,16 @@ public class Comment {
     private String title;
     private String comment;
 
+    private Integer likeCount;
+
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
+    }
+
     public String getComment() {
         return comment;
     }
