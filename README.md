@@ -251,6 +251,19 @@ Inflearn Spring Data JPA 강의 정리
         * Stream<User> readAllByFirstnameNotNull();
         <br>
         try-with-resource 사용할 것. (Stream을 다 쓴다음에 close() 해야 함)
+    * 비동기 쿼리
+        * @Async Future<User> findByFirstname(String firstname);               
+        * @Async CompletableFuture<User> findOneByFirstname(String firstname); 
+        * @Async ListenableFuture<User> findOneByLastname(String lastname);
+            * 해당 메소드를 스프링 TashExecutor에 전달해서 별도의 쓰레드에서 실행함.
+            * Reactive랑 다름
+        * 권장하지 않는 이유
+            * 테스트 코드 작성이 어려움
+            * 코드 복잡도 증가
+            * 성능상 이점이 없다.
+                * DB부하는 결국 같고
+                * 메인 쓰레드 대신 백그라운드 쓰레드가 일하는 정도의 차이
+                * 단, 백그라운드로 실행하고 결과를 받을 필요가 없는 작업이라면 @Async를 사용해서 응답속도를 향상 시킬수는 있다. 
 
 
         
