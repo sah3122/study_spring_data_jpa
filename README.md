@@ -272,6 +272,45 @@ Inflearn Spring Data JPA 강의 정리
             * 커스텀 리포지토리 인터페이스 정의 
             * 인터페이스 구현 클래스 만들기(기본 접미어는 Impl)
             * 엔티티 리포지토리에 커스텀 리포지토리 인터페이스 추가
+* 스프링 데이터 Common : 기본 리포지토리 커스터마이징
+    * 모든 리포지토리에 공통적으로 추가하고 싶은 기능이 있거나 덮어쓰고 싶은 기본 기능이 있다면
+        * JpaRepository를 상속 받는 인터페이스 정의
+            * @NoRepositoryBean
+        * 기본 구현체를 상속 받는 커스텀 구현체 만들기
+        * @EnableJpaRepositories 에 설정
+            * repositoryBaseClass
+        ```
+        @NoRepositoryBean
+        public interface MyRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
+        
+          boolean contains(T entity);
+        
+        }
+        ```
+        ```
+        public class SimpleMyRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements MyRepository<T, ID> {
+    
+            private EntityManager entityManager;
+        
+            public SimpleMyRepository(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager) {
+                super(entityInformation, entityManager);
+                this.entityManager = entityManager;
+            }
+        
+            @Override
+            public boolean contains(T entity) {
+                return entityManager.contains(entity);
+            }
+        }
+        ```
+        ```
+        @EnableJpaRepositories(repositoryBaseClass = SimpleMyRepository.class)
+        ```   
+        ```
+        public interface PostRepository extends MyRepository<Post, Long> {
+        }
+        ```   
+
             
 
         
