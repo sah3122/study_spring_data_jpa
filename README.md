@@ -310,7 +310,19 @@ Inflearn Spring Data JPA 강의 정리
         public interface PostRepository extends MyRepository<Post, Long> {
         }
         ```   
-
+* 스프링 데이터 Common : 도메인 이벤트
+    * 도메인 관련 이벤트를 발생 시키기
+    * 스프링 프레임워크의 이벤트 관련 기능
+        * ApplicationContext extends ApplicationEventPublisher
+        * 이벤트 : extends ApplicationEvent
+        * 리스너
+            * Implements ApplicationListener<E extends ApplicationEvent>
+            * @EventListener
+    * 스프링 데이터의 도메인 이벤트 Publisher
+        * @DomainEvents
+        * @AfterDomainEventPublisher
+        * extends AbstractAggregationRoot<E>
+        * 현재는 save() 할 때만 발생
             
 
         

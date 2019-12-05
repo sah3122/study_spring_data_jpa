@@ -1,5 +1,7 @@
 package me.study.springdatajpa.post;
 
+import org.springframework.data.domain.AbstractAggregateRoot;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.Lob;
 import java.time.LocalDateTime;
 
 @Entity
-public class Post {
+public class Post extends AbstractAggregateRoot<Post> {
     @Id @GeneratedValue
     private Long id;
 
@@ -48,5 +50,10 @@ public class Post {
 
     public void setLocalDateTime(LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
+    }
+
+    public Post publish() {
+        this.registerEvent(new PostPublishedEvent(this));
+        return this;
     }
 }
