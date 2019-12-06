@@ -323,7 +323,18 @@ Inflearn Spring Data JPA 강의 정리
         * @AfterDomainEventPublisher
         * extends AbstractAggregationRoot<E>
         * 현재는 save() 할 때만 발생
-            
+* 스프링 데이터 Common : QueryDSL
+    * 여러 쿼리 메소드는 대부분 두 가지 중 하나
+        * Optional<T> findOne(Predicate) : 이런 저런 조건으로 무언가를 하나 찾는다.
+        * List<T> | Page<T> | ... findAll(Predicate) : 이런 저런 조건으로 무언가 여러개 찾는다.
+    * QueryDSL 
+        * http://www.querydsl.com/
+        * 타입 세이프한 쿼리를 만들 수 있게 도와주는 라이브러리
+        * JPA, SQL, MongoDB, JDO, Lucene, Collection 지원
+    * 스프링 데이터 JPA + QueryDSL
+        * 인터페이스 : QuerydslPredicateExecutor<T>
+        * 구현체 : QuerydslPredicateExecutor<T>
+        
 
         
     

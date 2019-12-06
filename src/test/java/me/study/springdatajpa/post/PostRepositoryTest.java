@@ -1,5 +1,6 @@
 package me.study.springdatajpa.post;
 
+import com.querydsl.core.types.Predicate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -37,9 +40,12 @@ public class PostRepositoryTest {
         post.setContent("test");
         postRepository.save(post.publish());
 
-        postRepository.findMyPost();
+        //postRepository.findMyPost();
 
-        postRepository.delete(post);
+        //postRepository.delete(post);
+        Predicate predicate = QPost.post.title.containsIgnoreCase("hibernate");
+        Optional<Post> one = postRepository.findOne(predicate);
+        assertThat(one).isEmpty();
 
     }
 
