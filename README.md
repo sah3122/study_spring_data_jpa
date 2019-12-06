@@ -334,6 +334,20 @@ Inflearn Spring Data JPA 강의 정리
     * 스프링 데이터 JPA + QueryDSL
         * 인터페이스 : QuerydslPredicateExecutor<T>
         * 구현체 : QuerydslPredicateExecutor<T>
+* 스프링 데이터 웹 지원 기능 설정
+    * 스프링 부트를 사용하는 경우에 설정할 것이 없음(자동설정)
+    * 스프리 부트를 사용하지 않는 경우엔 @EnableSpringDataWebSupport
+    * 제공하는 기능
+        * 도메인 클래스 컨버터
+        * @RequestHandler 메소드에서 Pageable과 Sort 매개변수 사용
+        * Page 관련 HATEOAS 기능 제공
+            * PagedResourcesAssembler
+            * PagedResource
+        * Payload 프로덕션
+            * 요청으로 들어오는 데이터 중 일부만 바인딩 받아오기
+            * @ProjectedPayload, @XBRead, @JsonPath
+        * 요청 쿼리 매개변수를 QueryDSLdml Predicate로 받아오기
+            * ?firstname=Mr&lastname=White => Predicate
         
 
         
