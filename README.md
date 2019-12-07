@@ -348,6 +348,11 @@ Inflearn Spring Data JPA 강의 정리
             * @ProjectedPayload, @XBRead, @JsonPath
         * 요청 쿼리 매개변수를 QueryDSLdml Predicate로 받아오기
             * ?firstname=Mr&lastname=White => Predicate
+* 스프링 데이터 Common : Web 2부 DomainClassConverter
+    * 스프링 Converter 
+        * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/convert/converter/Converter.html
+        * Converter는 하나의 타입을 다른 타입으로 변환 해주는것.
+        * Formatter 는 문자열 기반임. 어떠한 문자열을 어떤 타입으로 변환 해주는것.
         
 
         
