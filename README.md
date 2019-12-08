@@ -353,7 +353,16 @@ Inflearn Spring Data JPA 강의 정리
         * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/convert/converter/Converter.html
         * Converter는 하나의 타입을 다른 타입으로 변환 해주는것.
         * Formatter 는 문자열 기반임. 어떠한 문자열을 어떤 타입으로 변환 해주는것.
-        
+* 스프링 데이터 Common : Web 2부 : Pageable 과 Sort 매개변수
+    * 스프링 MVC HandlerMethodArgumentResolver
+        * 스프링 MVC 핸들러 메소드의 매개변수로 받을 수 있는 객체를 확장하고 싶을 때 사용하는 인터페이스
+        * https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/method/support/HandlerMethodArgumentResolver.html
+    * 페이징과 정렬 관련 매개변수
+        * page : 0부터 시작
+        * size : 기본값 20
+        * sort : property.property(.ASC|DESC)
+        * ex) sort = created.desc&dort=title (asc가 기본값)
+                
 
         
     
