@@ -362,6 +362,10 @@ Inflearn Spring Data JPA 강의 정리
         * size : 기본값 20
         * sort : property.property(.ASC|DESC)
         * ex) sort = created.desc&dort=title (asc가 기본값)
+* 스프링 데이터 Common : Web 4부 : HATEOAS
+    * Page를 PagedResource 로 변환 - > 버전이 올라서 PagedResource가 아닌 PagedModel을 사용해야한다.
+        * HATEOAS 의존성 추가
+        * 핸들러 매개변수로 PagedResourcesAssembler 추가
                 
 
         
