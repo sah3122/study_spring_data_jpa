@@ -366,7 +366,15 @@ Inflearn Spring Data JPA 강의 정리
     * Page를 PagedResource 로 변환 - > 버전이 올라서 PagedResource가 아닌 PagedModel을 사용해야한다.
         * HATEOAS 의존성 추가
         * 핸들러 매개변수로 PagedResourcesAssembler 추가
-                
+* 스프링 데이터 JPA : JPA Repository
+    * @EnableJpaRepositories
+        * 스프링 부트 사용할 때는 사용하지 않아도 자동 설정 됨.
+        * 스프링 부트 사용하지 않을 때는 @Configuration과 같이 사용
+    * @Repository 애노테이션을 붙여야 하나 말아야 하나...
+        * 안붙여도 된다.
+        * SimpleJpaRepository 에 선언되어 있다.
+    * 스프링 @Repository
+        * SQLException 또는 JPA 관련 예외를 스프링의 DataAccessException으로 변환 해준다.
 
         
     
