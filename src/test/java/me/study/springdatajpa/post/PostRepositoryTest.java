@@ -1,6 +1,7 @@
 package me.study.springdatajpa.post;
 
 import com.querydsl.core.types.Predicate;
+import javafx.geometry.Pos;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,6 +28,9 @@ public class PostRepositoryTest {
 
     @Autowired
     ApplicationContext applicationContext;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Test
     public void event() {
@@ -47,6 +54,29 @@ public class PostRepositoryTest {
         Optional<Post> one = postRepository.findOne(predicate);
         assertThat(one).isEmpty();
 
+    }
+
+    @Test
+    public void save() {
+        Post post = new Post();
+        post.setTitle("jpa");
+        Post save = postRepository.save(post);//persist
+
+        assertThat(entityManager.contains(post)).isTrue();
+        assertThat(entityManager.contains(save)).isTrue();
+        assertThat(save == post);
+
+        Post updatePost = new Post();
+        post.setId(post.getId());
+        post.setTitle("hibernate");
+        Post updatedPost = postRepository.save(updatePost);//merge 상태에는 파라미터로 전달한 객체를 영속화 하지 않는다. 항상 리턴 받는 객체를 사용하자.
+
+        assertThat(entityManager.contains(updatedPost)).isTrue();
+        assertThat(entityManager.contains(updatePost)).isFalse();
+        assertThat(updatedPost == updatePost);
+
+        List<Post> all = postRepository.findAll();
+        assertThat(all.size()).isEqualTo(1);
     }
 
 }

@@ -375,8 +375,22 @@ Inflearn Spring Data JPA 강의 정리
         * SimpleJpaRepository 에 선언되어 있다.
     * 스프링 @Repository
         * SQLException 또는 JPA 관련 예외를 스프링의 DataAccessException으로 변환 해준다.
-
+* 스프링 데이터 JPA : 엔티티 저장하기
+    * JpaRepository의 save()는 단순히 새 엔티티를 추가하는 메소드가 아니다.
+        * Transient 상태의 객체라면 EntityManager.persist();
+            * Transient : PersistContext에 관리를 받지않은 상태
+        * Detached 상태의 객체라면 EntityManager.merge();
+            * Detached : PersistContext에 관리를 받은적이 있는 상태
+    * Transient인지 Detached 인지 어떻게 판단하는가 ?
+        * 엔티티의 @Id 프로퍼티를 찾는다. 해당 프로퍼티가 null이면 Transient 상태로 판단하고 id가 null이 아니면 Detached 상태로 판단한다.
+        * 엔티티가 Persistable 인터페이스를 구현하고 있다면 isNew() 메소드에 위임한다.
+        * JpaRepositoryFactory를 상속받는 클래스를 만들고 getEntityInfomation() 을 오버라이딩 해서 자신이 원하는 판단로직을 구현할 수도 있다.
         
+    * EntityManager.persist()
+        * Persist()메소드에 넘긴 그 엔티티 객체를 Persistent상태로 변경.
+    * EntityManager.merge()
+        * Merge() 메소드에 넘긴 그 엔티티의 복사본을 만들고, 그 복사본을 다시 Persisent상태로 변경하고 그 복사본을 반환.
+        * merge 상태에는 파라미터로 전달한 객체를 영속화 하지 않는다. **항상 리턴 받는 객체를 사용하자.**  
     
          
          
