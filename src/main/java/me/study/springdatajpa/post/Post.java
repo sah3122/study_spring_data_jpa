@@ -2,13 +2,11 @@ package me.study.springdatajpa.post;
 
 import org.springframework.data.domain.AbstractAggregateRoot;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@NamedQuery(name = "Post.findByTitle", query="SELECT p FROM Post AS p WHERE p.title = ?1")
 public class Post extends AbstractAggregateRoot<Post> {
     @Id @GeneratedValue
     private Long id;

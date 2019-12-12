@@ -79,4 +79,26 @@ public class PostRepositoryTest {
         assertThat(all.size()).isEqualTo(1);
     }
 
+    @Test
+    public void findByTitleStartWith() {
+        Post post = new Post();
+        post.setTitle("jpa");
+        Post save = postRepository.save(post);//persist
+
+        List<Post> all = postRepository.findByTitleStartsWith("jpa");
+        assertThat(all.size()).isEqualTo(1);
+
+    }
+
+    @Test
+    public void findByTitle() {
+        Post post = new Post();
+        post.setTitle("jpa");
+        Post save = postRepository.save(post);//persist
+
+        List<Post> all = postRepository.findByTitle("jpa");
+        assertThat(all.size()).isEqualTo(1);
+
+    }
+
 }
