@@ -436,7 +436,15 @@ Inflearn Spring Data JPA 강의 정리
     * update, delte 쿼리 직접 정의하기
         * @Modifying @Query
         * 추천하지 않음.
-        
+* 스프링 데이터 JPA : EntityGraph
+    * 쿼리 메소드 마다 연관 관계의 Fetch모드를 설정 할 수 있다.
+    * @NamedEntityGraph
+        * @Entity에서 재사용할 여러 엔티티 그룹을 정의 할 때 사용
+    * @EntityGraph
+        * @NamedEntityGraph에 정의 되어 있는 엔티티 그룹을 사용 함
+        * 그래프 타입 설정 가능
+            * (기본값) FETCH : 설정한 엔티티 애트리뷰트는 EAGER 패치 나머지는 LAZY 패치.
+            * LOAD : 설정한 엔티티 애트리뷰트는 EAGER패치 나머지는 기본 패치 전략을 따름.
        
         
             
