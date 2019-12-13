@@ -418,5 +418,19 @@ Inflearn Spring Data JPA 강의 정리
         * Sort는 그 안에서 사용한 **프로퍼티** 또는 **alias**가 엔티티에 없는 경우 예외를 던진다.
         * JpaSort.unsafe()를 사용하면 함수 호출을 할 수 있다.
             * JpaSort.unsafe("LENGTH(name)");
+* 스프링 데이터 JPA : Named Parameter 와 SpEL
+    * Named Parameter 
+        * @Query에서 참조하는 매개변수를 ?1, ?2 이렇게 채번으로 참조하는게 아니라 이름으로 :title 이렇게 참조하는 방법은 다음과 같습니다.
+        ```java
+          @Query("SELECT p FROM Post AS p WHERE p.title = :title")
+          List<Post> findByTitle(@Param("title") String title, Sort sort);
+        ``` 
+    * SqEL
+        * 스프링 표현 언어
+        * @Query에서 엔티티 이름을 #{#entityName} 으로 표현할 수 있다.
+        ```java
+          @Query("SELECT p FROM #{#entityName} AS p WHERE p.title = :title")
+          List<Post> findByTitle(@Param("title") String title, Sort sort);
+        ``` 
          
             
