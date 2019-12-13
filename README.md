@@ -432,5 +432,11 @@ Inflearn Spring Data JPA 강의 정리
           @Query("SELECT p FROM #{#entityName} AS p WHERE p.title = :title")
           List<Post> findByTitle(@Param("title") String title, Sort sort);
         ``` 
-         
+* 스프링 데이터 JPA : Update 쿼리 메소드
+    * update, delte 쿼리 직접 정의하기
+        * @Modifying @Query
+        * 추천하지 않음.
+        
+       
+        
             

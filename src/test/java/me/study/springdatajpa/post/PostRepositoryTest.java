@@ -101,4 +101,18 @@ public class PostRepositoryTest {
 
     }
 
+    @Test
+    public void updateTitle() {
+        Post post = new Post();
+        post.setTitle("jpa");
+        Post save = postRepository.save(post);//persist
+
+        int count = postRepository.updateTitle("hibernate", save.getId());
+        assertThat(count).isEqualTo(1);
+
+        Optional<Post> byId = postRepository.findById(save.getId());
+        assertThat(byId.get().getTitle()).isEqualTo("jpa");
+
+    }
+
 }
