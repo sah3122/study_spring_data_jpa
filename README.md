@@ -412,5 +412,11 @@ Inflearn Spring Data JPA 강의 정리
         * 리포지토리 메소드에 정의한 쿼리 사용하기
             * @Query
             * @Query(nativeQuery=true) 
+* 스프링 데이터 JPA : 쿼리 메소드 Sort
+    * 이전과 마찬가지로 Pageable이나 Sort 매개변수로 사용할 수 있는데 @Query와 같이 사용할 때 제약사항이 있다.
+    * Order by 절에서 함수를 호출 하는 경우에는 Sort를 사용하지 못한다. 그경우엔 JpaSort.unsafe()를 사용 해야 한다.
+        * Sort는 그 안에서 사용한 **프로퍼티** 또는 **alias**가 엔티티에 없는 경우 예외를 던진다.
+        * JpaSort.unsafe()를 사용하면 함수 호출을 할 수 있다.
+            * JpaSort.unsafe("LENGTH(name)");
          
             

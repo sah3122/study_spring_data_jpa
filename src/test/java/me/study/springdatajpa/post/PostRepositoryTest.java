@@ -1,7 +1,6 @@
 package me.study.springdatajpa.post;
 
 import com.querydsl.core.types.Predicate;
-import javafx.geometry.Pos;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
@@ -96,7 +96,7 @@ public class PostRepositoryTest {
         post.setTitle("jpa");
         Post save = postRepository.save(post);//persist
 
-        List<Post> all = postRepository.findByTitle("jpa");
+        List<Post> all = postRepository.findByTitle("jpa", Sort.by("title"));
         assertThat(all.size()).isEqualTo(1);
 
     }
