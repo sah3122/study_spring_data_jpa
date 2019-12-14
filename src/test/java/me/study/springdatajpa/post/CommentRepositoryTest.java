@@ -22,9 +22,22 @@ public class CommentRepositoryTest {
     public void getComment() {
         Post post = new Post();
         post.setTitle("jpa");
-        postRepository.save(post);
+        Post save = postRepository.save(post);
+
+        Comment comment = new Comment();
+        comment.setComment("comment");
+        comment.setPost(save);
+        comment.setUp(10);
+        comment.setDown(1);
+
+        commentRepository.save(comment);
 
         commentRepository.findById(1L);
+        commentRepository.findByPost_Id(save.getId(), CommentSummary.class).forEach(c -> {
+            System.out.println(c.getVotes());
+        });
     }
+
+
 
 }
