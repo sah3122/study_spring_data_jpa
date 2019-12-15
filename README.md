@@ -487,5 +487,21 @@ Inflearn Spring Data JPA 강의 정리
         * nested 또는 프로퍼티 그룹 제약 조건을 못 만든다.
         * 조건이 제한적이다. 문자열은 starts/contains/ends/regex가 가능하고 그 밖에 property는 값이 정확히 일치해야 한다.
     * Repository에 QueryByExampleExecutor 상속 
-        
+* 스프링 데이터 JPA : Transaction 
+    * Isolation
+        * 여러 트랜젝션이 동시에 DB에 접근할 때 어떻게 처리할 지 정의 
+            * Default
+            * Read_committed
+            * Read_uncommitted
+            * Repeatable_read
+            * serializable
+    * Propagation
+        * 트랜젝션을 어떤방식으로 전파 시킬 것인지 정의. (Nested Transaction 에 관한 이야기.)
+            * Mandatory
+            * Nested
+            * Never
+            * Not_supported
+            * Required
+            * Requires_new
+            * Supports
             
