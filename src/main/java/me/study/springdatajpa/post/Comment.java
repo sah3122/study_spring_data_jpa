@@ -1,13 +1,24 @@
 package me.study.springdatajpa.post;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @NamedEntityGraph(name = "Comment.post",
         attributeNodes = @NamedAttributeNode("post"))
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Comment {
     @Id @GeneratedValue
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private CommentStatus commentStatus;
 
     private String comment;
 
@@ -19,6 +30,20 @@ public class Comment {
     private int down;
 
     private boolean best;
+
+    @CreatedDate
+    private Date created;
+
+    @CreatedBy
+    @ManyToOne
+    private Account createdBy;
+
+    @LastModifiedDate
+    private Date updated;
+
+    @LastModifiedBy
+    @ManyToOne
+    private Account updatedBy;
 
     public int getUp() {
         return up;
@@ -66,5 +91,11 @@ public class Comment {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    @PrePersist // 저장되기 전에 발생
+    public void perPersist() {
+        System.out.println("pre persist called");
+        // Spring Security 사용시  SecurityContextHolder에서 유저를 꺼내올 수 있다.
     }
 }

@@ -106,7 +106,9 @@ Inflearn Spring Data JPA 강의 정리
             * 컬럼으로 맵핑하고 싶지 않은 멤버 변수에 적용
         * applciation.properties 추천
             * spring.jpa.show-sql=true
-            * spring.jpa.properties.hibernate.format_sql=true       
+            * spring.jpa.properties.hibernate.format_sql=true
+        * @Enumernate
+            * 맵핑시 기본값이 아닌 String으로 사용해야 한다.        
     * Value 타입 맵핑
         * 엔티티 타입과 Value 타입 구분
             * 식별자가 있어야 하는가
@@ -504,4 +506,33 @@ Inflearn Spring Data JPA 강의 정리
             * Required
             * Requires_new
             * Supports
+* 스프링 데이터 JPA : Auditing
+    ```java
+          @CreatedDate
+          private Date created;
+      
+          @CreatedBy
+          @ManyToOne
+          private Account createdBy;
+      
+          @LastModifiedDate
+          private Date updated;
+      
+          @LastModifiedBy
+          @ManyToOne
+          private Account updatedBy;
+    ```
+    * 엔티티의 변경 시점에 언제, 누가 변경 했는지에 대한 정보를 기록하는 기능.
+    * 아쉽지만 이 기능은 스프링 부트가 자동설정해주지 않음.   
+        1. 메인 애플리케이션 위에 @EnableJpaAuditing 추가
+        2. 엔티티 클래스에 @EntityListener(AuditingEntityListener.class) 추가
+        3. AuditorAware 구현체 만들기
+        4. @EnableJpaAuditing에 AuditorAware 빈 이름 설정
+        
+    * JPA 라이프 사이클을 사용하면 조금더 General하게 설정 할 수 있다.
+        * https://docs.jboss.org/hibernate/orm/4.0/hem/en-US/html/listeners.html
+        * Jpa 라이프 사이클 : entity에 변화가 일어날 시 callback을 정의 할 수 있다.
+            * @PrePersiste
+            * @PreUpdate
+            * ...
             
