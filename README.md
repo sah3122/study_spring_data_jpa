@@ -469,9 +469,23 @@ Inflearn Spring Data JPA 강의 정리
         * https://docs.jboss.org/hibernate/stable/jpamodelgen/reference/en-US/html_single/
         * 의존성 설정
         * 플러그인 설정
-        * IDE에 애노테이션 처리기 설정
+        * IDE에 애노테이션 처리기 설정 (org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor)
         * 코딩 시작.
         * 괜찮은 방법중 하나.
-       
+* 스프링 데이터 JPA : Query By Example 
+    * QBE는 필드 이름을 작성할 필요 없이(뻥) 단순한 인터페이스를 통해 동적으로 쿼리를 만드는 기능을 제공하는 사용자
+    친화적인 쿼리 기술. 
+    * Example = Probe + ExampleMatcher
+        * Probe는 필드에 어떤 값들을 가지고 있는 도메인 객체
+        * ExampleMatcher는 Prove에 들어있는 그 필드의 값들을 어떻게 쿼리할 데이터와 비교할 지 정의한것
+        * Example은 그 둘을 하나로 합친 것, 이걸로 쿼리를 함
+    * 장점       
+        * 별다른 코드 생성기나 애노테이션 처리기 필요 없음
+        * 도메인 객체 리팩토링 해도 기존 쿼리가 깨질 걱정을 하지 않아도 됨. (뻥)
+        * 데이터 기술에 독립적인 API
+    * 단점
+        * nested 또는 프로퍼티 그룹 제약 조건을 못 만든다.
+        * 조건이 제한적이다. 문자열은 starts/contains/ends/regex가 가능하고 그 밖에 property는 값이 정확히 일치해야 한다.
+    * Repository에 QueryByExampleExecutor 상속 
         
             
