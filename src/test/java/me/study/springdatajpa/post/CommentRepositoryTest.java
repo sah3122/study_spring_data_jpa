@@ -4,8 +4,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static me.study.springdatajpa.post.CommentSpecs.*;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -38,6 +41,9 @@ public class CommentRepositoryTest {
         });
     }
 
-
+    @Test
+    public void specs() {
+        Page<Comment> page = commentRepository.findAll(isBest().and(isGood()), PageRequest.of(0, 10));
+    }
 
 }
